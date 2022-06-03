@@ -1,12 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-# NO other imports are allowed
+
 
 class Shape:
     '''
-    DO NOT MODIFY THIS CLASS
-
-    DO NOT ADD ANY NEW METHODS TO THIS CLASS
+    Shape class
     '''
     def __init__(self):
         self.T_s = None
@@ -86,7 +84,9 @@ class Polygon(Shape):
         if dy==None:
             dy=dx
         
-        Shape.translate(self,dx,dy)
+        # calling super class translate function to initialize T_t(translation) matrix
+        super().translate(dx,dy)
+
         tm=self.T_t
         T_tt= tm.transpose()
         newcord=self.A @ T_tt
