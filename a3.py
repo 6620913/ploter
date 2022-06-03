@@ -131,7 +131,7 @@ class Polygon(Shape):
         for i in range(0,len(self.A)):
             scaling_mat[i][1]=(self.A[i][1]-y_avg)
 
-        Shape.scale(self,sx,sy)
+        super().scale(sx,sy)
         sm=self.T_s
         T_ss= sm.transpose()
         scaling_mat=scaling_mat @ T_ss
@@ -169,16 +169,16 @@ class Polygon(Shape):
         self.y_old=self.y_new
 
         x=np.array(self.x_old)
-        x_avg=np.average(x)
+        # x_avg=np.average(x)
         y=np.array(self.y_old)
-        y_avg=np.average(y)
+        # y_avg=np.average(y)
         rotate_mat=self.A
         for i in range(0,len(self.A)):
             rotate_mat[i][0]=(self.A[i][0]-rx)
         for i in range(0,len(self.A)):
             rotate_mat[i][1]=(self.A[i][1]-ry)
 
-        Shape.rotate(self,deg)
+        super().rotate(deg)
         rm=self.T_r
         T_rr= rm.transpose()
         rotate_mat=rotate_mat @ T_rr
@@ -239,7 +239,7 @@ class Polygon(Shape):
         x_lim=max(x_lim_new,x_lim_old)
         y_lim=max(y_lim_new,y_lim_old)
 
-        Shape.plot(self,x_lim,y_lim)
+        super().plot(x_lim,y_lim)
 
 
 class Circle(Shape):
